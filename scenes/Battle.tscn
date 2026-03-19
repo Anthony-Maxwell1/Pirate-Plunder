@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cmnaayusi4ua1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_iyvxb"]
+
+[node name="Node3D" type="Node3D" unique_id=1533560527]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=544276375]
+transform = Transform3D(1, 0, 0, 0, 0.9063078, 0.4226183, 0, -0.4226183, 0.9063078, 0, 1, 1.7530496)
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1807673779]
+mesh = SubResource("BoxMesh_iyvxb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=485380172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5255406, 0)
