@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cmnaayusi4ua1"]
+
+[ext_resource type="Texture2D" uid="uid://fa2t8uxwtbi0" path="res://assets/images/waves/layer1/draft1.png" id="1_o344a"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0448q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rusm"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_o344a")
+texture_filter = 0
+
+[node name="Node3D" type="Node3D" unique_id=1533560527]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=544276375]
+transform = Transform3D(1, 0, 0, 0, 0.9063078, 0.4226183, 0, -0.4226183, 0.9063078, 0, 1, 1.7530496)
+current = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=485380172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5255406, 0)
+omni_range = 8.114799
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=445352191]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("QuadMesh_0448q")
+surface_material_override/0 = SubResource("StandardMaterial3D_2rusm")
