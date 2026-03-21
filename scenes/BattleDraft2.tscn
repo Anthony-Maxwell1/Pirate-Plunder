@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://bc1pdl0ef6fw6"]
+
+[ext_resource type="Texture2D" uid="uid://fa2t8uxwtbi0" path="res://assets/images/waves/layer1/draft1.png" id="1_dn5o5"]
+[ext_resource type="Script" uid="uid://sbceku21b70o" path="res://scripts/parallax/waves-battle.gd" id="1_fi6cg"]
+[ext_resource type="Texture2D" uid="uid://rfic882dj1mo" path="res://assets/images/waves/layer3/draft1.png" id="2_02ls0"]
+[ext_resource type="Texture2D" uid="uid://cvey78vsadwfw" path="res://assets/images/waves/layer4/draft1.png" id="2_2lsxy"]
+[ext_resource type="Texture2D" uid="uid://cvtd70y1f112r" path="res://assets/images/waves/layer2/draft1.png" id="2_iv4x3"]
+
+[node name="Node2D" type="Node2D" unique_id=197193452]
+
+[node name="Waves" type="Parallax2D" parent="." unique_id=1374222469]
+
+[node name="Layer5" type="CanvasGroup" parent="Waves" unique_id=1114984095]
+clip_children = 1
+position = Vector2(0, -6.1035156e-05)
+script = ExtResource("1_fi6cg")
+speed = 60.0
+
+[node name="Shadow" type="Sprite2D" parent="Waves/Layer5" unique_id=765528246]
+modulate = Color(0, 0, 0, 0.4509804)
+texture_filter = 2
+position = Vector2(-25, 250)
+scale = Vector2(15, 15)
+texture = ExtResource("2_iv4x3")
+centered = false
+offset = Vector2(0, -30)
+metadata/note = "This is here for the sake of reusing the same script for parallax, and so is not actually visible."
+
+[node name="Layer5" type="Sprite2D" parent="Waves/Layer5" unique_id=8604365]
+position = Vector2(0, 250)
+scale = Vector2(14.4, 14.4)
+texture = ExtResource("2_iv4x3")
+centered = false
+offset = Vector2(0, -30)
+
+[node name="Layer4" type="CanvasGroup" parent="Waves" unique_id=2045699035]
+position = Vector2(0, -6.1035156e-05)
+script = ExtResource("1_fi6cg")
+
+[node name="Shadow" type="Sprite2D" parent="Waves/Layer4" unique_id=183888696]
+modulate = Color(0, 0, 0, 0.4509804)
+texture_filter = 2
+position = Vector2(-25, 390)
+scale = Vector2(15, 15)
+texture = ExtResource("2_2lsxy")
+centered = false
+offset = Vector2(0, -30)
+
+[node name="Layer4" type="Sprite2D" parent="Waves/Layer4" unique_id=1552530627]
+position = Vector2(0, 390)
+scale = Vector2(14.4, 14.4)
+texture = ExtResource("2_2lsxy")
+centered = false
+offset = Vector2(0, -30)
+
+[node name="Layer3" type="CanvasGroup" parent="Waves" unique_id=194459403]
+position = Vector2(0, -6.1035156e-05)
+script = ExtResource("1_fi6cg")
+speed = 40.0
+
+[node name="Shadow" type="Sprite2D" parent="Waves/Layer3" unique_id=888986798]
+modulate = Color(0, 0, 0, 0.4509804)
+texture_filter = 2
+position = Vector2(-25, 489)
+scale = Vector2(15, 15)
+texture = ExtResource("2_02ls0")
+centered = false
+offset = Vector2(0, -30)
+
+[node name="Layer3" type="Sprite2D" parent="Waves/Layer3" unique_id=394917837]
+position = Vector2(0, 504)
+scale = Vector2(14.4, 14.4)
+texture = ExtResource("2_02ls0")
+centered = false
+offset = Vector2(0, -30)
+
+[node name="Layer2" type="CanvasGroup" parent="Waves" unique_id=916751084]
+position = Vector2(0, -6.1035156e-05)
+script = ExtResource("1_fi6cg")
+speed = 30.0
+
+[node name="Shadow" type="Sprite2D" parent="Waves/Layer2" unique_id=1511089533]
+modulate = Color(0, 0, 0, 0.4509804)
+texture_filter = 2
+position = Vector2(-25, 633)
+scale = Vector2(15, 15)
+texture = ExtResource("2_iv4x3")
+centered = false
+offset = Vector2(0, -30)
+
+[node name="Layer2" type="Sprite2D" parent="Waves/Layer2" unique_id=589254159]
+position = Vector2(0, 648)
+scale = Vector2(14.4, 14.4)
+texture = ExtResource("2_iv4x3")
+centered = false
+offset = Vector2(0, -30)
+
+[node name="Layer1" type="CanvasGroup" parent="Waves" unique_id=555611610]
+script = ExtResource("1_fi6cg")
+speed = 15.0
+
+[node name="Shadow" type="Sprite2D" parent="Waves/Layer1" unique_id=476556076]
+modulate = Color(0, 0, 0, 0.4509804)
+texture_filter = 2
+position = Vector2(-25, 633)
+scale = Vector2(15, 15)
+texture = ExtResource("1_dn5o5")
+centered = false
+offset = Vector2(0, -10)
+
+[node name="Layer1" type="Sprite2D" parent="Waves/Layer1" unique_id=460990283]
+position = Vector2(0, 648)
+scale = Vector2(14.4, 14.4)
+texture = ExtResource("1_dn5o5")
+centered = false
+offset = Vector2(0, -10)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1447716647]
+anchor_mode = 0
