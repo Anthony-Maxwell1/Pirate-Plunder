@@ -1,7 +1,7 @@
 shader_type spatial;
-uniform float time_scale = 1.0;
-uniform float wave_height = 1.2;
-uniform float choppiness = 1.4;
+uniform float time_scale = 0.5;
+uniform float wave_height = 3;
+uniform float choppiness = 0.5;
 varying float v_height;
 varying vec3 v_world_pos;
 
