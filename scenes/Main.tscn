@@ -23,3 +23,8 @@ transform = Transform3D(1, 0, 0, 0, 0.9248384, 0.38036025, 0, -0.38036025, 0.924
 
 [node name="Ship" type="MeshInstance3D" parent="." unique_id=520689657]
 mesh = SubResource("QuadMesh_rvslj")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1392114494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.59184, 53.63585, -48.798717)
+light_energy = 16.0
+light_size = 0.753
