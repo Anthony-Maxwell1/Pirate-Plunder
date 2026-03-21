@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b5jaug2th2hcd"]
+
+[ext_resource type="Shader" uid="uid://bhoh2vljhpicj" path="res://assets/shaders/ocean/ocean.gdshader" id="1_80bmy"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_80bmy")
+shader_parameter/time_scale = 1.0
+shader_parameter/wave_height = 1.2

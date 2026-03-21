@@ -2,7 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://fa2t8uxwtbi0" path="res://assets/images/waves/layer1/draft1.png" id="1_o344a"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o344a"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_o344a")
+texture_filter = 0
+
 [sub_resource type="QuadMesh" id="QuadMesh_0448q"]
+material = SubResource("StandardMaterial3D_o344a")
+size = Vector2(8, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rusm"]
 transparency = 1
@@ -20,7 +28,25 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5255406, 0)
 omni_range = 8.114799
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=445352191]
+[node name="Node3D" type="Node3D" parent="." unique_id=1332126766]
+
+[node name="Layer1" type="MeshInstance3D" parent="Node3D" unique_id=445352191]
+mesh = SubResource("QuadMesh_0448q")
+
+[node name="Layer2" type="MeshInstance3D" parent="Node3D" unique_id=238626696]
 transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_0448q")
+surface_material_override/0 = SubResource("StandardMaterial3D_2rusm")
+
+[node name="Layer3" type="MeshInstance3D" parent="Node3D" unique_id=1773757140]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_0448q")
+surface_material_override/0 = SubResource("StandardMaterial3D_2rusm")
+
+[node name="Layer4" type="MeshInstance3D" parent="Node3D" unique_id=567782836]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("QuadMesh_0448q")
 surface_material_override/0 = SubResource("StandardMaterial3D_2rusm")
