@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://d304frvn1y4sb"]
 
 [ext_resource type="Material" uid="uid://b5jaug2th2hcd" path="res://assets/shaders/ocean/ocean.tres" id="1_elqb8"]
+[ext_resource type="Script" uid="uid://djuelgfrbwyfs" path="res://scenes/OceanParticles.gd" id="2_rvslj"]
+[ext_resource type="Script" uid="uid://bnwao7jm4ponn" path="res://scripts/Boat.gd" id="3_0bbpv"]
+[ext_resource type="Script" uid="uid://ckqh22v375glq" path="res://scripts/CameraScript.gd" id="4_rarhs"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qnwvq"]
 material = ExtResource("1_elqb8")
@@ -8,23 +11,81 @@ size = Vector2(100, 100)
 subdivide_width = 200
 subdivide_depth = 200
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elqb8"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_elqb8"]
+direction = Vector3(1, 1, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 12.0
+damping_min = 0.2
+damping_max = 1.0
+scale_over_velocity_max = 2.0
 
-[sub_resource type="QuadMesh" id="QuadMesh_rvslj"]
-material = SubResource("StandardMaterial3D_elqb8")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvslj"]
+albedo_color = Color(0.83463854, 0.9219541, 0.9999997, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_elqb8"]
+material = SubResource("StandardMaterial3D_rvslj")
+radius = 0.2
+height = 0.4
+radial_segments = 4
+rings = 1
+
+[sub_resource type="Skin" id="Skin_rvslj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rvslj"]
+
+[sub_resource type="Sky" id="Sky_0bbpv"]
+sky_material = SubResource("ProceduralSkyMaterial_rvslj")
+
+[sub_resource type="Environment" id="Environment_rarhs"]
+background_mode = 2
+sky = SubResource("Sky_0bbpv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rarhs"]
+cull_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_vcsgt"]
+material = SubResource("StandardMaterial3D_rarhs")
+size = Vector2(16, 16)
+orientation = 0
 
 [node name="Main" type="Node3D" unique_id=1698877648]
 
 [node name="Ocean" type="MeshInstance3D" parent="." unique_id=1221419041]
 mesh = SubResource("PlaneMesh_qnwvq")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=957180265]
-transform = Transform3D(1, 0, 0, 0, 0.9248384, 0.38036025, 0, -0.38036025, 0.9248384, 0, 5.699724, 46.009956)
-
-[node name="Ship" type="MeshInstance3D" parent="." unique_id=520689657]
-mesh = SubResource("QuadMesh_rvslj")
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Ocean" unique_id=1952732723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.489727, 8.181105, 0)
+emitting = false
+amount = 80
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_elqb8")
+draw_pass_1 = SubResource("SphereMesh_elqb8")
+draw_skin = SubResource("Skin_rvslj")
+script = ExtResource("2_rvslj")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1392114494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.59184, 53.63585, -48.798717)
 light_energy = 16.0
 light_size = 0.753
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=468407791]
+environment = SubResource("Environment_rarhs")
+
+[node name="Boat" type="MeshInstance3D" parent="." unique_id=1681880987]
+transform = Transform3D(0.9923732, 0.12180909, 4.642763e-07, -0.12062117, 0.9827161, -0.13921778, -0.016961168, 0.13818096, 0.99008936, 0.36953017, 5.074165, -0.105214015)
+mesh = SubResource("QuadMesh_vcsgt")
+script = ExtResource("3_0bbpv")
+draft = 5.0
+move_speed = null
+turn_speed = null
+accel = null
+drag = null
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=957180265 node_paths=PackedStringArray("target")]
+transform = Transform3D(-4.371139e-08, -0.57357645, 0.81915206, 0, 0.81915206, 0.57357645, -1, 2.5071824e-08, -3.5806274e-08, 0, 5.699724, 46.009956)
+script = ExtResource("4_rarhs")
+target = NodePath("../Boat")
+fixed_y = 20.0
+distance = Vector2(25, 0)
