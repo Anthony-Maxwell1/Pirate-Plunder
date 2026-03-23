@@ -53,15 +53,17 @@ void vertex() {
 
 void fragment() {
     float h = v_height;
-
     vec2 p = v_world_pos.xz;
-    float eps = 0.3;
+
+    // Scale eps with the wave frequency range so curvature stays normalised
+    float eps = 12.0;
     float hx = ocean_height(p + vec2(eps, 0.0));
     float hy = ocean_height(p + vec2(0.0, eps));
-    float curvature = abs(hx - h) + abs(hy - h);
-    float foam_curv = smoothstep(0.06, 0.20, curvature);
-    float foam_peak = smoothstep(0.55, 0.85, h / max_height);
-    float foam = clamp(foam_curv * 0.8 + foam_peak, 0.0, 1.0);
+    float curvature = (abs(hx - h) + abs(hy - h)) / eps; // divide by eps to normalise
+
+    float foam_curv = smoothstep(0.18, 0.55, curvature);
+    float foam_peak = smoothstep(0.72, 0.95, h / max_height);
+    float foam = clamp(foam_curv * 0.6 + foam_peak * 0.4, 0.0, 1.0);
 
     // Normalise h into [0,1] using the explicit range for colour bands
     float depth = clamp((h - min_height) / (max_height - min_height), 0.0, 1.0);

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://m0se84jye4b8"]
+
+[ext_resource type="Material" uid="uid://b5jaug2th2hcd" path="res://assets/shaders/ocean/ocean.tres" id="1_nomke"]
+[ext_resource type="Texture2D" uid="uid://bn674j7fxhc5h" path="res://assets/images/logo/placeholder lol.png" id="13_jpd8y"]
+[ext_resource type="Script" uid="uid://bnwao7jm4ponn" path="res://scripts/Boat.gd" id="14_8h86d"]
+[ext_resource type="Script" uid="uid://ckqh22v375glq" path="res://scripts/CameraScript.gd" id="15_nuxhj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qnwvq"]
+material = ExtResource("1_nomke")
+size = Vector2(300, 300)
+subdivide_width = 200
+subdivide_depth = 200
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rarhs"]
+cull_mode = 2
+albedo_texture = ExtResource("13_jpd8y")
+
+[sub_resource type="QuadMesh" id="QuadMesh_vcsgt"]
+material = SubResource("StandardMaterial3D_rarhs")
+size = Vector2(10, 10)
+orientation = 0
+
+[node name="Main" type="Node3D" unique_id=1698877648]
+
+[node name="Ocean" type="MeshInstance3D" parent="." unique_id=1221419041]
+mesh = SubResource("PlaneMesh_qnwvq")
+
+[node name="Boat" type="MeshInstance3D" parent="." unique_id=1681880987]
+transform = Transform3D(0.77532095, -0.08546306, 0.62519085, -0.11745882, 0.9537299, 0.27615783, -0.6197369, -0.287679, 0.7298039, -30.167559, 3.3598752, -25.622066)
+mesh = SubResource("QuadMesh_vcsgt")
+script = ExtResource("14_8h86d")
+draft = 3.0
+
+[node name="Camera" type="Camera3D" parent="." unique_id=957180265 node_paths=PackedStringArray("target")]
+transform = Transform3D(-4.371139e-08, -0.1736482, 0.9848078, 0, 0.9848078, 0.1736482, -1, 7.590404e-09, -4.3047315e-08, -0.18143463, 20, -25.625511)
+script = ExtResource("15_nuxhj")
+target = NodePath("../Boat")
+fixed_y = 20.0
+distance = Vector2(30, 0)

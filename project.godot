@@ -16,6 +16,21 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://bn674j7fxhc5h"
 config/icon="res://icon.svg"
 
+[audio]
+
+manager/sound/bus="Sound"
+manager/sound/pool_1D_size=16
+manager/sound/pool_2D_size=16
+manager/sound/pool_3D_size=16
+manager/sound/max_polyphony=32
+manager/music/bus="Music"
+
+[autoload]
+
+SaveManager="*uid://cix8sambq3iv"
+MusicManager="*uid://b3612i7nyqsva"
+SoundManager="*uid://sgxo2a017ehn"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
@@ -23,7 +38,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SunshineClouds2/plugin.cfg")
+enabled=PackedStringArray("res://addons/SunshineClouds2/plugin.cfg", "res://addons/resonate/plugin.cfg")
 
 [physics]
 

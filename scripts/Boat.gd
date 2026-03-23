@@ -1,5 +1,5 @@
 @tool
-extends Node3D
+extends MeshInstance3D
 
 ## Attach this to a MeshInstance3D (or any Node3D) that should float on the ocean.
 ## The wave math mirrors the ShaderMaterial exactly.
@@ -195,3 +195,17 @@ func _ready() -> void:
 	var xz := Vector2(global_position.x, global_position.z)
 	global_position.y = ocean_height(xz) + draft
 	_prev_warp = _warp_displacement(xz)
+
+# serialization for saving
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"pos_z": position.z,
+		"rot_x": rotation.x,
+		"rot_y": rotation.y,
+		"rot_z": rotation.z,
+	}
+	return save_dict
