@@ -3,7 +3,20 @@
 [ext_resource type="Material" uid="uid://b5jaug2th2hcd" path="res://assets/shaders/ocean/ocean.tres" id="1_elqb8"]
 [ext_resource type="Script" uid="uid://djuelgfrbwyfs" path="res://scenes/OceanParticles.gd" id="2_rvslj"]
 [ext_resource type="Script" uid="uid://bnwao7jm4ponn" path="res://scripts/Boat.gd" id="3_0bbpv"]
+[ext_resource type="RDShaderFile" uid="uid://dx1y5cye1m1hu" path="res://addons/SunshineClouds2/SunshineCloudsCompute.glsl" id="3_3p2gp"]
+[ext_resource type="CompressedTexture3D" uid="uid://dei12lsgrjpyu" path="res://addons/SunshineClouds2/NoiseTextures/curl_noise_varied.tga" id="4_cvmbd"]
 [ext_resource type="Script" uid="uid://ckqh22v375glq" path="res://scripts/CameraScript.gd" id="4_rarhs"]
+[ext_resource type="CompressedTexture3D" uid="uid://b3uyfsp4in821" path="res://addons/SunshineClouds2/NoiseTextures/bluenoise_Dither.png" id="5_ft6cd"]
+[ext_resource type="Texture2D" uid="uid://de2nsujnhdlg0" path="res://addons/SunshineClouds2/NoiseTextures/ExtraLargeScaleNoise.tres" id="6_bb450"]
+[ext_resource type="Texture2D" uid="uid://g02m2ewpwusq" path="res://addons/SunshineClouds2/NoiseTextures/HeightGradient.tres" id="7_nfivy"]
+[ext_resource type="NoiseTexture3D" uid="uid://6ed3lvlpbqmg" path="res://addons/SunshineClouds2/NoiseTextures/LargeScaleNoise.tres" id="8_1nqs0"]
+[ext_resource type="NoiseTexture3D" uid="uid://dxyewgt7o40m0" path="res://addons/SunshineClouds2/NoiseTextures/MediumScaleNoise.tres" id="9_1iba3"]
+[ext_resource type="RDShaderFile" uid="uid://cqhejbalsrvjp" path="res://addons/SunshineClouds2/SunshineCloudsPostCompute.glsl" id="10_yxlcp"]
+[ext_resource type="RDShaderFile" uid="uid://crfpk8ta4qxsk" path="res://addons/SunshineClouds2/SunshineCloudsPreCompute.glsl" id="11_ebg2g"]
+[ext_resource type="Script" uid="uid://dnblgqynq1t7l" path="res://addons/SunshineClouds2/SunshineClouds.gd" id="12_2ofn6"]
+[ext_resource type="NoiseTexture3D" uid="uid://bnck2kxeg5bkg" path="res://addons/SunshineClouds2/NoiseTextures/SmallScaleNoise.tres" id="13_xa025"]
+[ext_resource type="Script" uid="uid://djusduuxf0voj" path="res://addons/SunshineClouds2/SunshineCloudsDriver.gd" id="16_ft6cd"]
+[ext_resource type="Script" uid="uid://bxlm4e5qfb7uu" path="res://addons/SunshineClouds2/SunshineCloudEffector.gd" id="17_bb450"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qnwvq"]
 material = ExtResource("1_elqb8")
@@ -11,81 +24,115 @@ size = Vector2(100, 100)
 subdivide_width = 200
 subdivide_depth = 200
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_elqb8"]
-direction = Vector3(1, 1, 0)
-initial_velocity_min = 6.0
-initial_velocity_max = 12.0
-damping_min = 0.2
-damping_max = 1.0
-scale_over_velocity_max = 2.0
+[sub_resource type="Environment" id="Environment_ma7h6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvslj"]
-albedo_color = Color(0.83463854, 0.9219541, 0.9999997, 1)
+[sub_resource type="CompositorEffect" id="CompositorEffect_e2s0e"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 3
+access_resolved_color = true
+access_resolved_depth = true
+needs_motion_vectors = true
+needs_normal_roughness = false
+script = ExtResource("12_2ofn6")
+clouds_coverage = 0.669
+clouds_density = 1.0
+atmospheric_density = 0.195
+lighting_density = 3.062
+clouds_anisotropy = 0.637
+clouds_powder = 0.635
+cloud_ambient_color = Color(0.8966705, 0.996257, 0.9963464, 1)
+cloud_ambient_tint = Color(0.69330376, 0.79378533, 0.8581043, 1)
+sampled_environment_fog_color = Color(0.653263, 0.68438965, 0.7328075, 1)
+ambient_occlusion_color = Color(0.3944775, 0.41444892, 0.42295656, 1)
+accumulation_decay = 0.398
+extra_large_noise_scale = 440018.57
+large_noise_scale = 49649.834
+medium_noise_scale = 23556.043
+small_noise_scale = 3000.0
+clouds_sharpness = 0.764
+clouds_detail_power = 3.0
+curl_noise_strength = 13895.696
+lighting_sharpness = 0.902
+wind_swept_range = 0.45
+wind_swept_strength = 1072.02
+cloud_floor = 500.0
+cloud_ceiling = 40000.0
+max_step_count = 150.0
+dither_noise = ExtResource("5_ft6cd")
+height_gradient = ExtResource("7_nfivy")
+extra_large_noise_patterns = ExtResource("6_bb450")
+large_scale_noise = ExtResource("8_1nqs0")
+medium_scale_noise = ExtResource("9_1iba3")
+small_scale_noise = ExtResource("13_xa025")
+curl_noise = ExtResource("4_cvmbd")
+dither_speed = 10.0
+blur_power = 8.659
+blur_quality = 1.9220000000000002
+pre_pass_compute_shader = ExtResource("11_ebg2g")
+compute_shader = ExtResource("3_3p2gp")
+post_pass_compute_shader = ExtResource("10_yxlcp")
+wind_direction = Vector3(1, 0, 1)
+directional_lights_data = Array[Vector4]([Vector4(0, 0, 1, 12), Vector4(0.8761735, 0.9211546, 0.9873635, 5)])
 
-[sub_resource type="SphereMesh" id="SphereMesh_elqb8"]
-material = SubResource("StandardMaterial3D_rvslj")
-radius = 0.2
-height = 0.4
-radial_segments = 4
-rings = 1
-
-[sub_resource type="Skin" id="Skin_rvslj"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rvslj"]
-
-[sub_resource type="Sky" id="Sky_0bbpv"]
-sky_material = SubResource("ProceduralSkyMaterial_rvslj")
-
-[sub_resource type="Environment" id="Environment_rarhs"]
-background_mode = 2
-sky = SubResource("Sky_0bbpv")
+[sub_resource type="Compositor" id="Compositor_gsxep"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_e2s0e")])
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rarhs"]
 cull_mode = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_vcsgt"]
 material = SubResource("StandardMaterial3D_rarhs")
-size = Vector2(16, 16)
+size = Vector2(10, 10)
 orientation = 0
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nfivy"]
+
+[sub_resource type="Sky" id="Sky_0bbpv"]
+sky_material = SubResource("ProceduralSkyMaterial_nfivy")
+
+[sub_resource type="Environment" id="Environment_rarhs"]
+background_mode = 2
+sky = SubResource("Sky_0bbpv")
 
 [node name="Main" type="Node3D" unique_id=1698877648]
 
 [node name="Ocean" type="MeshInstance3D" parent="." unique_id=1221419041]
 mesh = SubResource("PlaneMesh_qnwvq")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Ocean" unique_id=1952732723]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.489727, 8.181105, 0)
-emitting = false
-amount = 80
-lifetime = 0.6
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_elqb8")
-draw_pass_1 = SubResource("SphereMesh_elqb8")
-draw_skin = SubResource("Skin_rvslj")
 script = ExtResource("2_rvslj")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1392114494]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.59184, 53.63585, -48.798717)
-light_energy = 16.0
-light_size = 0.753
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=468407791]
-environment = SubResource("Environment_rarhs")
+[node name="Skybox" type="WorldEnvironment" parent="." unique_id=468407791]
+environment = SubResource("Environment_ma7h6")
+compositor = SubResource("Compositor_gsxep")
 
 [node name="Boat" type="MeshInstance3D" parent="." unique_id=1681880987]
-transform = Transform3D(0.9923732, 0.12180909, 4.642763e-07, -0.12062117, 0.9827161, -0.13921778, -0.016961168, 0.13818096, 0.99008936, 0.36953017, 5.074165, -0.105214015)
+transform = Transform3D(0.6320105, -0.18929812, 0.7511212, 0.048780564, 0.9773196, 0.20525445, -0.7727728, -0.09312467, 0.62725943, -20.388731, 1.1898112, -52.59686)
 mesh = SubResource("QuadMesh_vcsgt")
 script = ExtResource("3_0bbpv")
-draft = 5.0
-move_speed = null
-turn_speed = null
-accel = null
-drag = null
+draft = 3.0
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=957180265 node_paths=PackedStringArray("target")]
+[node name="Camera" type="Camera3D" parent="." unique_id=957180265 node_paths=PackedStringArray("target")]
 transform = Transform3D(-4.371139e-08, -0.57357645, 0.81915206, 0, 0.81915206, 0.57357645, -1, 2.5071824e-08, -3.5806274e-08, 0, 5.699724, 46.009956)
 script = ExtResource("4_rarhs")
 target = NodePath("../Boat")
 fixed_y = 20.0
 distance = Vector2(25, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1293379505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.993866, 53.03913, 46.89969)
+light_color = Color(0.8761735, 0.9211546, 0.9873635, 1)
+light_energy = 5.0
+
+[node name="SunshineCloudsDriverGD" type="Node" parent="." unique_id=1730860560 node_paths=PackedStringArray("tracked_directional_lights")]
+script = ExtResource("16_ft6cd")
+update_continuously = true
+clouds_resource = SubResource("CompositorEffect_e2s0e")
+ambience_sample_environment = SubResource("Environment_rarhs")
+tracked_directional_lights = [NodePath("../DirectionalLight3D")]
+tracked_directional_light_shadow_steps = Array[int]([12])
+metadata/_custom_type_script = "uid://djusduuxf0voj"
+
+[node name="SunshineCloudsEffector" type="Node3D" parent="." unique_id=1698072719]
+script = ExtResource("17_bb450")
+metadata/_custom_type_script = "uid://bxlm4e5qfb7uu"

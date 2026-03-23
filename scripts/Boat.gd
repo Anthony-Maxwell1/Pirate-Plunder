@@ -5,7 +5,7 @@ extends Node3D
 ## The wave math mirrors the ShaderMaterial exactly.
 
 # ── Ocean shader uniforms (keep in sync with your ShaderMaterial) ────────────
-@export_group("Ocean Shader Uniforms")
+@export_group("Ocean Shader Uniforms (Should match Shader)")
 @export var min_height: float = -3.0
 @export var max_height: float =  3.0
 @export var height_weight: float = 1.0
