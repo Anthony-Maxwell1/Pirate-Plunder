@@ -13,6 +13,7 @@ config_version=5
 config/name="Pirate Plunder"
 run/main_scene="uid://cmnaayusi4ua1"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/image="uid://bn674j7fxhc5h"
 config/icon="res://icon.svg"
 
 [editor]

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://d304frvn1y4sb"]
 
 [ext_resource type="Material" uid="uid://b5jaug2th2hcd" path="res://assets/shaders/ocean/ocean.tres" id="1_elqb8"]
-[ext_resource type="Script" uid="uid://djuelgfrbwyfs" path="res://scenes/OceanParticles.gd" id="2_rvslj"]
 [ext_resource type="Script" uid="uid://bnwao7jm4ponn" path="res://scripts/Boat.gd" id="3_0bbpv"]
 [ext_resource type="RDShaderFile" uid="uid://dx1y5cye1m1hu" path="res://addons/SunshineClouds2/SunshineCloudsCompute.glsl" id="3_3p2gp"]
 [ext_resource type="CompressedTexture3D" uid="uid://dei12lsgrjpyu" path="res://addons/SunshineClouds2/NoiseTextures/curl_noise_varied.tga" id="4_cvmbd"]
@@ -14,6 +13,7 @@
 [ext_resource type="RDShaderFile" uid="uid://cqhejbalsrvjp" path="res://addons/SunshineClouds2/SunshineCloudsPostCompute.glsl" id="10_yxlcp"]
 [ext_resource type="RDShaderFile" uid="uid://crfpk8ta4qxsk" path="res://addons/SunshineClouds2/SunshineCloudsPreCompute.glsl" id="11_ebg2g"]
 [ext_resource type="Script" uid="uid://dnblgqynq1t7l" path="res://addons/SunshineClouds2/SunshineClouds.gd" id="12_2ofn6"]
+[ext_resource type="Texture2D" uid="uid://bn674j7fxhc5h" path="res://assets/images/logo/placeholder lol.png" id="13_ft6cd"]
 [ext_resource type="NoiseTexture3D" uid="uid://bnck2kxeg5bkg" path="res://addons/SunshineClouds2/NoiseTextures/SmallScaleNoise.tres" id="13_xa025"]
 [ext_resource type="Script" uid="uid://djusduuxf0voj" path="res://addons/SunshineClouds2/SunshineCloudsDriver.gd" id="16_ft6cd"]
 [ext_resource type="Script" uid="uid://bxlm4e5qfb7uu" path="res://addons/SunshineClouds2/SunshineCloudEffector.gd" id="17_bb450"]
@@ -24,7 +24,14 @@ size = Vector2(100, 100)
 subdivide_width = 200
 subdivide_depth = 200
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cvmbd"]
+
+[sub_resource type="Sky" id="Sky_ft6cd"]
+sky_material = SubResource("ProceduralSkyMaterial_cvmbd")
+
 [sub_resource type="Environment" id="Environment_ma7h6"]
+background_mode = 2
+sky = SubResource("Sky_ft6cd")
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_e2s0e"]
 resource_local_to_scene = false
@@ -81,6 +88,7 @@ compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_e2s0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rarhs"]
 cull_mode = 2
+albedo_texture = ExtResource("13_ft6cd")
 
 [sub_resource type="QuadMesh" id="QuadMesh_vcsgt"]
 material = SubResource("StandardMaterial3D_rarhs")
@@ -100,24 +108,23 @@ sky = SubResource("Sky_0bbpv")
 
 [node name="Ocean" type="MeshInstance3D" parent="." unique_id=1221419041]
 mesh = SubResource("PlaneMesh_qnwvq")
-script = ExtResource("2_rvslj")
 
 [node name="Skybox" type="WorldEnvironment" parent="." unique_id=468407791]
 environment = SubResource("Environment_ma7h6")
 compositor = SubResource("Compositor_gsxep")
 
 [node name="Boat" type="MeshInstance3D" parent="." unique_id=1681880987]
-transform = Transform3D(0.6320105, -0.18929812, 0.7511212, 0.048780564, 0.9773196, 0.20525445, -0.7727728, -0.09312467, 0.62725943, -20.388731, 1.1898112, -52.59686)
+transform = Transform3D(0.6921875, 0.34510106, 0.6333692, -0.25913438, 0.9383568, -0.22791642, -0.6728523, -0.0063697537, 0.7393468, -30.603584, 3.8301857, -24.852716)
 mesh = SubResource("QuadMesh_vcsgt")
 script = ExtResource("3_0bbpv")
 draft = 3.0
 
 [node name="Camera" type="Camera3D" parent="." unique_id=957180265 node_paths=PackedStringArray("target")]
-transform = Transform3D(-4.371139e-08, -0.57357645, 0.81915206, 0, 0.81915206, 0.57357645, -1, 2.5071824e-08, -3.5806274e-08, 0, 5.699724, 46.009956)
+transform = Transform3D(-4.371139e-08, -0.1736482, 0.9848078, 0, 0.9848078, 0.1736482, -1, 7.590404e-09, -4.3047315e-08, -0.58793235, 20, -24.856815)
 script = ExtResource("4_rarhs")
 target = NodePath("../Boat")
 fixed_y = 20.0
-distance = Vector2(25, 0)
+distance = Vector2(30, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1293379505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.993866, 53.03913, 46.89969)
