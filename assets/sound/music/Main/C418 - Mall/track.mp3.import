@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d3jtmlu218k2l"
+path="res://.godot/imported/track.mp3-9cdfb49dc4d3b03e84d9553940552dbc.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/Main/C418 - Mall/track.mp3"
+dest_files=["res://.godot/imported/track.mp3-9cdfb49dc4d3b03e84d9553940552dbc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
