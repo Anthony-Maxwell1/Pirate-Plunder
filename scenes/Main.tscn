@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://4t37j755r2bm" path="res://assets/images/ui/menu/pause/draft1-devart.png" id="19_ebg2g"]
 [ext_resource type="Script" uid="uid://d4je66j8ldelx" path="res://scripts/PauseMenuButtons.gd" id="19_nfivy"]
 [ext_resource type="Texture2D" uid="uid://coiivigfa1h1p" path="res://assets/images/ui/menu/save/draft1-devart.png" id="21_2ofn6"]
+[ext_resource type="Script" uid="uid://1lqxi2ow5t6w" path="res://scripts/DebugButton.gd" id="23_e2s0e"]
+[ext_resource type="Script" uid="uid://b2435v4ifsvd0" path="res://scripts/DebugMenu.gd" id="23_gsxep"]
 [ext_resource type="Script" uid="uid://tcthnorjpgue" path="res://addons/resonate/music_manager/music_bank.gd" id="23_ma7h6"]
 [ext_resource type="Texture2D" uid="uid://bkpgvxj1wj02d" path="res://assets/images/ui/menu/load/draft1-devart.png" id="23_xa025"]
 [ext_resource type="Script" uid="uid://b7b808lp7kq7n" path="res://addons/resonate/music_manager/music_track_resource.gd" id="24_e2s0e"]
@@ -153,14 +155,14 @@ environment = SubResource("Environment_ma7h6")
 compositor = SubResource("Compositor_gsxep")
 
 [node name="Boat" type="MeshInstance3D" parent="." unique_id=1681880987 groups=["Persist"]]
-transform = Transform3D(-0.086993515, -0.13095465, -0.9852995, -0.06609051, 0.9897074, -0.12515879, 0.9920173, 0.054452736, -0.09474278, -148.1998, 3.671234, 29.264605)
+transform = Transform3D(0.6945635, -0.22792977, -0.67927665, 0.26962933, 0.9615501, -0.04570042, 0.6638916, -0.15205854, 0.7292198, -145.10696, 2.240957, -70.38198)
 mesh = SubResource("QuadMesh_vcsgt")
 script = ExtResource("3_0bbpv")
 draft = 3.0
 metadata/save_id = "ba0bf2dd-cd77-4b1c-b791-e2ceef3f46e9"
 
 [node name="Camera" type="Camera3D" parent="." unique_id=957180265 node_paths=PackedStringArray("target")]
-transform = Transform3D(-4.371139e-08, -0.1736482, 0.9848078, 0, 0.9848078, 0.1736482, -1, 7.590404e-09, -4.3047315e-08, -118.19768, 20, 29.247183)
+transform = Transform3D(-4.371139e-08, -0.1736482, 0.9848078, 0, 0.9848078, 0.1736482, -1, 7.590404e-09, -4.3047315e-08, -115.1053, 20, -70.3953)
 script = ExtResource("4_rarhs")
 target = NodePath("../Boat")
 fixed_y = 20.0
@@ -235,6 +237,38 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("19_nfivy")
 isLoadButton = true
+
+[node name="Debug" type="Control" parent="UI/PauseMenu" unique_id=411604307 node_paths=PackedStringArray("button", "label", "input")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_gsxep")
+button = NodePath("Template")
+label = NodePath("Template2")
+input = NodePath("Template3")
+
+[node name="Template" type="Button" parent="UI/PauseMenu/Debug" unique_id=551016897]
+layout_mode = 0
+offset_left = 854.0
+offset_top = 89.0
+offset_right = 988.0
+offset_bottom = 136.0
+script = ExtResource("23_e2s0e")
+
+[node name="Template2" type="Label" parent="UI/PauseMenu/Debug" unique_id=524272275]
+layout_mode = 0
+offset_left = 854.0
+offset_top = 89.0
+offset_right = 988.0
+offset_bottom = 136.0
+text = "Template"
+
+[node name="Template3" type="LineEdit" parent="UI/PauseMenu/Debug" unique_id=605838891]
+layout_mode = 0
+offset_left = 854.0
+offset_top = 89.0
+offset_right = 988.0
+offset_bottom = 136.0
 
 [node name="MusicBank" type="Node" parent="." unique_id=1295870085]
 script = ExtResource("23_ma7h6")

@@ -1,11 +1,14 @@
 extends Node
 
+enum Mode { THIRD, HALF, FULL, NONE }
+
 @export var bank: String
 @export var tracks: Array
+@export var repeatMode: Mode = Mode.THIRD
 
 var last_played: Array = []
 
-var max_last_played: int
+var max_last_played: int = 0
 
 func _not_in_last_played(element):
 	return not last_played.has(element)
@@ -24,6 +27,12 @@ func _pick_and_play_track() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if repeatMode == Mode.THIRD:
+		max_last_played = floor(tracks.size() / 3)
+	if repeatMode == Mode.HALF:
+		max_last_played = floor(tracks.size() / 2)
+	if repeatMode == Mode.FULL:
+		max_last_played = tracks.size()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
