@@ -4,48 +4,35 @@ extends Control
 @export var label: Label
 @export var input: LineEdit
 
-func print_name(name):
-	print("Name:", name)
 
+func resonate_play_track(musicbank, track):
+	MusicManager.play(musicbank, track)
 
-func add_numbers(a, b):
-	# Convert safely to numbers
-	var num1 = float(a)
-	var num2 = float(b)
-	
-	print("Result:", num1 + num2)
+func resonate_stop():
+	MusicManager.stop()
 
 var ui_data = [
 	{
-		"type": "label",
-		"text": "Enter your name:"
+		"type": "input",
+		"name": "MusicBank",
+		"placeholder": "MusicBank..."
 	},
 	{
 		"type": "input",
-		"name": "NameInput",
-		"placeholder": "Name here..."
+		"name": "Track",
+		"placeholder": "Track..."
 	},
 	{
 		"type": "button",
-		"text": "Print Name",
-		"function": "print_name",
-		"args": ["$NameInput"]
-	},
-	{
-		"type": "input",
-		"name": "Num1",
-		"placeholder": "First number"
-	},
-	{
-		"type": "input",
-		"name": "Num2",
-		"placeholder": "Second number"
+		"text": "Play Track",
+		"function": "resonate_play_track",
+		"args": ["$MusicBank", "$Track"]
 	},
 	{
 		"type": "button",
-		"text": "Add Numbers",
-		"function": "add_numbers",
-		"args": ["$Num1", "$Num2"]
+		"text": "Stop Track",
+		"function": "resonate_stop",
+		"args": []
 	}
 ]
 
