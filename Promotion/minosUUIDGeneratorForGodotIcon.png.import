@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ntgipyp6jv34"
-path="res://.godot/imported/sound_bank.svg-d1b3f43714c54a9c122e6a364a95c7d8.ctex"
+uid="uid://cdlrbl05m3jmu"
+path="res://.godot/imported/minosUUIDGeneratorForGodotIcon.png-973f5c31fa0ec8b4ed9458000308524a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/resonate/sound_manager/sound_bank.svg"
-dest_files=["res://.godot/imported/sound_bank.svg-d1b3f43714c54a9c122e6a364a95c7d8.ctex"]
+source_file="res://Promotion/minosUUIDGeneratorForGodotIcon.png"
+dest_files=["res://.godot/imported/minosUUIDGeneratorForGodotIcon.png-973f5c31fa0ec8b4ed9458000308524a.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

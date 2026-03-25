@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ntgipyp6jv34"
-path="res://.godot/imported/sound_bank.svg-d1b3f43714c54a9c122e6a364a95c7d8.ctex"
+uid="uid://c37ado0751vg1"
+path="res://.godot/imported/uuidIcon.svg-48139cdc0aaeb5e277234b5acf23dffc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/resonate/sound_manager/sound_bank.svg"
-dest_files=["res://.godot/imported/sound_bank.svg-d1b3f43714c54a9c122e6a364a95c7d8.ctex"]
+source_file="res://addons/minos_uuid_generator/uuidIcon.svg"
+dest_files=["res://.godot/imported/uuidIcon.svg-48139cdc0aaeb5e277234b5acf23dffc.ctex"]
 
 [params]
 

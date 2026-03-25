@@ -4,36 +4,40 @@ extends Control
 @export var label: Label
 @export var input: LineEdit
 
-
-func resonate_play_track(musicbank, track):
-	MusicManager.play(musicbank, track)
-
-func resonate_stop():
-	MusicManager.stop()
-
 var ui_data = [
-	{
-		"type": "input",
-		"name": "MusicBank",
-		"placeholder": "MusicBank..."
-	},
-	{
-		"type": "input",
-		"name": "Track",
-		"placeholder": "Track..."
-	},
-	{
-		"type": "button",
-		"text": "Play Track",
-		"function": "resonate_play_track",
-		"args": ["$MusicBank", "$Track"]
-	},
-	{
-		"type": "button",
-		"text": "Stop Track",
-		"function": "resonate_stop",
-		"args": []
-	}
+	#{
+		#"type": "input",
+		#"name": "MusicBank",
+		#"placeholder": "MusicBank..."
+	#},
+	#{
+		#"type": "input",
+		#"name": "Track",
+		#"placeholder": "Track..."
+	#},
+	#{
+		#"type": "button",
+		#"text": "Play Track",
+		#"function": "resonate_play_track",
+		#"args": ["$MusicBank", "$Track"]
+	#},
+	#{
+		#"type": "button",
+		#"text": "Stop Track",
+		#"function": "resonate_stop",
+		#"args": []
+	#},
+	#{
+		#"type": "input",
+		#"name": "seek_length",
+		#"placeholder": "Seek length..."
+	#},
+	#{
+		#"type": "button",
+		#"text": "Seek Track",
+		#"function": "resonate_seek_track",
+		#"args": ["$seek_length"]
+	#}
 ]
 
 func _ready():

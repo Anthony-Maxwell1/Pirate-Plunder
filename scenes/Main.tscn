@@ -23,13 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://coiivigfa1h1p" path="res://assets/images/ui/menu/save/draft1-devart.png" id="21_2ofn6"]
 [ext_resource type="Script" uid="uid://1lqxi2ow5t6w" path="res://scripts/DebugButton.gd" id="23_e2s0e"]
 [ext_resource type="Script" uid="uid://b2435v4ifsvd0" path="res://scripts/DebugMenu.gd" id="23_gsxep"]
-[ext_resource type="Script" uid="uid://tcthnorjpgue" path="res://addons/resonate/music_manager/music_bank.gd" id="23_ma7h6"]
 [ext_resource type="Texture2D" uid="uid://bkpgvxj1wj02d" path="res://assets/images/ui/menu/load/draft1-devart.png" id="23_xa025"]
-[ext_resource type="Script" uid="uid://b7b808lp7kq7n" path="res://addons/resonate/music_manager/music_track_resource.gd" id="24_e2s0e"]
-[ext_resource type="Script" uid="uid://ddb2xi0y6ub48" path="res://addons/resonate/music_manager/music_stem_resource.gd" id="25_gsxep"]
 [ext_resource type="AudioStream" uid="uid://ceamcx0ovcsvt" path="res://assets/sound/music/Main/C418 - Cat/track.mp3" id="26_v0vrg"]
 [ext_resource type="AudioStream" uid="uid://d3jtmlu218k2l" path="res://assets/sound/music/Main/C418 - Mall/track.mp3" id="27_dg70y"]
-[ext_resource type="Script" uid="uid://y17wgih4e3ss" path="res://scripts/MusicTrigger.gd" id="28_pnhog"]
+[ext_resource type="Script" uid="uid://y17wgih4e3ss" path="res://scripts/MusicBank.gd" id="28_pnhog"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qnwvq"]
 material = ExtResource("1_elqb8")
@@ -119,32 +116,6 @@ sky_material = SubResource("ProceduralSkyMaterial_nfivy")
 background_mode = 2
 sky = SubResource("Sky_0bbpv")
 
-[sub_resource type="Resource" id="Resource_2c4at"]
-script = ExtResource("25_gsxep")
-name = "C418 - Cat"
-enabled = true
-stream = ExtResource("26_v0vrg")
-metadata/_custom_type_script = "uid://ddb2xi0y6ub48"
-
-[sub_resource type="Resource" id="Resource_g6wdg"]
-script = ExtResource("24_e2s0e")
-name = "C418 - Cat"
-stems = Array[ExtResource("25_gsxep")]([SubResource("Resource_2c4at")])
-metadata/_custom_type_script = "uid://b7b808lp7kq7n"
-
-[sub_resource type="Resource" id="Resource_hq6as"]
-script = ExtResource("25_gsxep")
-name = "C418 - Mall"
-enabled = true
-stream = ExtResource("27_dg70y")
-metadata/_custom_type_script = "uid://ddb2xi0y6ub48"
-
-[sub_resource type="Resource" id="Resource_kxyth"]
-script = ExtResource("24_e2s0e")
-name = "C418 - Mall"
-stems = Array[ExtResource("25_gsxep")]([SubResource("Resource_hq6as")])
-metadata/_custom_type_script = "uid://b7b808lp7kq7n"
-
 [node name="Main" type="Node3D" unique_id=1698877648]
 
 [node name="Ocean" type="MeshInstance3D" parent="." unique_id=1221419041]
@@ -155,14 +126,14 @@ environment = SubResource("Environment_ma7h6")
 compositor = SubResource("Compositor_gsxep")
 
 [node name="Boat" type="MeshInstance3D" parent="." unique_id=1681880987 groups=["Persist"]]
-transform = Transform3D(-0.76742744, -0.07954589, 0.6338986, -0.02430813, 0.9949855, 0.0950792, -0.6385977, 0.057719383, -0.7653996, -188.91063, 3.4794736, -105.53382)
+transform = Transform3D(0.94167936, 0.12977625, -0.3090832, -0.09081394, 0.9861972, 0.13709277, 0.3228067, -0.10113537, 0.9402135, 409.14053, 2.5589406, -458.5933)
 mesh = SubResource("QuadMesh_vcsgt")
 script = ExtResource("3_0bbpv")
 draft = 3.0
 metadata/save_id = "ba0bf2dd-cd77-4b1c-b791-e2ceef3f46e9"
 
 [node name="Camera" type="Camera3D" parent="." unique_id=957180265 node_paths=PackedStringArray("target")]
-transform = Transform3D(-4.371139e-08, -0.1736482, 0.9848078, 0, 0.9848078, 0.1736482, -1, 7.590404e-09, -4.3047315e-08, -158.93353, 20, -105.544846)
+transform = Transform3D(-4.371139e-08, -0.1736482, 0.9848078, 0, 0.9848078, 0.1736482, -1, 7.590404e-09, -4.3047315e-08, 439.12686, 20, -458.59985)
 script = ExtResource("4_rarhs")
 target = NodePath("../Boat")
 fixed_y = 20.0
@@ -270,13 +241,7 @@ offset_top = 89.0
 offset_right = 988.0
 offset_bottom = 136.0
 
-[node name="MusicBank" type="Node" parent="." unique_id=1295870085]
-script = ExtResource("23_ma7h6")
-label = "bg-music"
-tracks = Array[ExtResource("24_e2s0e")]([SubResource("Resource_g6wdg"), SubResource("Resource_kxyth")])
-metadata/_custom_type_script = "uid://tcthnorjpgue"
-
 [node name="MusicTrigger" type="Node" parent="." unique_id=242860794]
 script = ExtResource("28_pnhog")
-bank = "bg-music"
-tracks = ["C418 - Mall", "C418 - Cat"]
+tracks = Array[AudioStream]([ExtResource("27_dg70y"), ExtResource("26_v0vrg")])
+automatic = 1
