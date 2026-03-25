@@ -3,7 +3,7 @@ extends Node
 enum Mode { THIRD, HALF, FULL, NONE }
 enum Automatic { DISABLED, BGMUSIC }
 
-@export var tracks: Array[Track]
+@export var tracks: Array[MusicTrack]
 
 @export_category("Automatic")
 @export var automatic: Automatic = Automatic.DISABLED
@@ -12,7 +12,7 @@ enum Automatic { DISABLED, BGMUSIC }
 @export var repeatMode: Mode = Mode.THIRD
 
 
-const INVALID_INDEX := -1
+const INVALID_INDEX := -40001
 
 var max_wait: int = 0
 var last_played: Array[String] = [] # store track names
@@ -63,8 +63,17 @@ func play_track(name: String) -> bool:
 	curr_id = MusicManager.play(track.stream)
 	return true
 
+func fetch_id() -> int:
+	if curr_id != INVALID_INDEX:
+		return curr_id
+	return INVALID_INDEX
 
-func _ready():
+func fetch_player() -> AudioStreamPlayer:
+	if curr_id == INVALID_INDEX:
+		return null
+	return MusicManager.get_player(curr_id)
+
+func _ready() -> void:
 	if automatic == Automatic.BGMUSIC:
 		if repeatMode == Mode.THIRD:
 			max_wait = floor(tracks.size() / 3)
@@ -78,6 +87,6 @@ func _ready():
 	_automatic_bgmusic_pick_and_play()
 
 
-func _process(delta: float):
+func _process(delta: float) -> void:
 	if curr_id == INVALID_INDEX or not MusicManager.get_playing(curr_id):
 		_automatic_bgmusic_pick_and_play()

@@ -4,6 +4,8 @@ var current: Dictionary[int, AudioStreamPlayer]
 
 var idx: int = -40000
 
+const INVALID_INDEX := -40001
+
 func generate(track: AudioStream, autoplay: bool = false) -> AudioStreamPlayer:
 	var player = AudioStreamPlayer.new()
 	player.stream = track
@@ -11,18 +13,23 @@ func generate(track: AudioStream, autoplay: bool = false) -> AudioStreamPlayer:
 	add_child(player)
 	return player
 
-func play(track: AudioStream = null, id_: int = -12390123, position: float = 0.0, autoplay: bool = true) -> int:
-	if id_ == -12390123:
+func _fix_position(position: float, length: float) -> float:
+	if length < 0:
+		return position - length
+	return position
+
+func play(track: AudioStream = null, id_: int = INVALID_INDEX, position: float = 0.0, autoplay: bool = true) -> int:
+	if id_ == INVALID_INDEX:
 		var id = idx
 		idx += 1
 		var player = generate(track)
 		current[id] = player
-		if autoplay: player.play(position)
+		if autoplay: player.play(_fix_position(position, track.get_length()))
 		return id
 	else:
 		if not current.has(id_):
 			return 0
-		current[id_].play(position)
+		current[id_].play(_fix_position(position, current[id_].get_length()))
 		return 1
 
 func get_player(id: int) -> AudioStreamPlayer:
@@ -40,11 +47,16 @@ func get_playback_position(id: int) -> int:
 		return -1
 	return get_player(id).get_playback_position()
 
-func seek(id: int, position: float = 0.0) -> bool:
+func goto(id: int, position: float = 0.0) -> bool:
 	if not current.has(id):
 		return false
-	current[id].seek(position)
+	current[id].seek(_fix_position(position, current[id].stream.get_length()))
 	return true
+
+func seek(id: int, amount: float = 0.0) -> bool:
+	if not current.has(id):
+		return false
+	return goto(id, current[id].get_playback_position() + amount)
 
 func stop(id: int) -> bool:
 	if not current.has(id):
@@ -59,8 +71,8 @@ func remove(id: int) -> bool:
 	current.erase(id)
 	return true
 
-func insert(player: AudioStreamPlayer, id: int = -10293819023) -> bool:
-	if id == -10293819023:
+func insert(player: AudioStreamPlayer, id: int = INVALID_INDEX) -> bool:
+	if id == INVALID_INDEX:
 		id = idx
 		idx += 1
 	if current.has(id):

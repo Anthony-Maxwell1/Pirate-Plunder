@@ -4,6 +4,20 @@ extends Control
 @export var label: Label
 @export var input: LineEdit
 
+@export_group("MusicBanks")
+@export var bgmusic: Node
+
+func bgmusic_stop() -> void:
+	MusicManager.stop(bgmusic.call("fetch_id"))
+
+func bgmusic_goto(position_: String) -> void:
+	var position = float(position_)
+	MusicManager.goto(bgmusic.call("fetch_id"), position)
+
+func bgmusic_seek(position_: String) -> void:
+	var position = float(position_)
+	MusicManager.seek(bgmusic.call("fetch_id"), position)
+
 var ui_data = [
 	#{
 		#"type": "input",
@@ -21,23 +35,34 @@ var ui_data = [
 		#"function": "resonate_play_track",
 		#"args": ["$MusicBank", "$Track"]
 	#},
-	#{
-		#"type": "button",
-		#"text": "Stop Track",
-		#"function": "resonate_stop",
-		#"args": []
-	#},
-	#{
-		#"type": "input",
-		#"name": "seek_length",
-		#"placeholder": "Seek length..."
-	#},
-	#{
-		#"type": "button",
-		#"text": "Seek Track",
-		#"function": "resonate_seek_track",
-		#"args": ["$seek_length"]
-	#}
+	{
+		"type": "button",
+		"text": "Stop/Skip bgmusic",
+		"function": "bgmusic_stop",
+		"args": []
+	},
+	{
+		"type": "input",
+		"name": "seek_length",
+		"placeholder": "Seek length..."
+	},
+	{
+		"type": "button",
+		"text": "Seek bgmusic",
+		"function": "bgmusic_seek",
+		"args": ["$seek_length"]
+	},
+		{
+		"type": "input",
+		"name": "goto_length",
+		"placeholder": "Goto length..."
+	},
+	{
+		"type": "button",
+		"text": "Goto bgmusic",
+		"function": "bgmusic_goto",
+		"args": ["$goto_length"]
+	}
 ]
 
 func _ready():
