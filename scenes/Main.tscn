@@ -126,14 +126,14 @@ environment = SubResource("Environment_ma7h6")
 compositor = SubResource("Compositor_gsxep")
 
 [node name="Boat" type="MeshInstance3D" parent="." unique_id=1681880987 groups=["Persist"]]
-transform = Transform3D(0.94167936, 0.12977625, -0.3090832, -0.09081394, 0.9861972, 0.13709277, 0.3228067, -0.10113537, 0.9402135, 409.14053, 2.5589406, -458.5933)
+transform = Transform3D(0.7439682, -0.14139333, -0.65221953, -0.012178949, 0.974125, -0.22477624, 0.66755074, 0.1753514, 0.72278106, 407.91898, 4.388948, -454.98718)
 mesh = SubResource("QuadMesh_vcsgt")
 script = ExtResource("3_0bbpv")
 draft = 3.0
 metadata/save_id = "ba0bf2dd-cd77-4b1c-b791-e2ceef3f46e9"
 
 [node name="Camera" type="Camera3D" parent="." unique_id=957180265 node_paths=PackedStringArray("target")]
-transform = Transform3D(-4.371139e-08, -0.1736482, 0.9848078, 0, 0.9848078, 0.1736482, -1, 7.590404e-09, -4.3047315e-08, 439.12686, 20, -458.59985)
+transform = Transform3D(-4.371139e-08, -0.1736482, 0.9848078, 0, 0.9848078, 0.1736482, -1, 7.590404e-09, -4.3047315e-08, 437.91846, 20, -455.00266)
 script = ExtResource("4_rarhs")
 target = NodePath("../Boat")
 fixed_y = 20.0
@@ -245,3 +245,4 @@ offset_bottom = 136.0
 script = ExtResource("28_pnhog")
 tracks = Array[AudioStream]([ExtResource("27_dg70y"), ExtResource("26_v0vrg")])
 automatic = 1
+repeatMode = null
