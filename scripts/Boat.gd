@@ -1,4 +1,3 @@
-@tool
 extends MeshInstance3D
 
 ## Attach this to a MeshInstance3D (or any Node3D) that should float on the ocean.
