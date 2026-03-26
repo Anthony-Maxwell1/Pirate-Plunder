@@ -139,14 +139,14 @@ environment = SubResource("Environment_ma7h6")
 compositor = SubResource("Compositor_gsxep")
 
 [node name="Boat" type="MeshInstance3D" parent="." unique_id=1681880987 groups=["Persist"]]
-transform = Transform3D(-0.7165392, -0.14266165, -0.6815709, -0.029560314, 0.9839995, -0.1745725, 0.69584346, -0.10510311, -0.70925814, 467.07153, 2.527334, -479.75006)
+transform = Transform3D(-0.33566546, 0.21314728, -0.9163563, 0.018910177, 0.9752073, 0.21946271, 0.9408271, 0.056444846, -0.33134595, 466.68893, 4.542682, -479.96405)
 mesh = SubResource("QuadMesh_vcsgt")
 script = ExtResource("3_0bbpv")
 draft = 3.0
 metadata/save_id = "ba0bf2dd-cd77-4b1c-b791-e2ceef3f46e9"
 
 [node name="Camera" type="Camera3D" parent="." unique_id=957180265 node_paths=PackedStringArray("target")]
-transform = Transform3D(-4.371139e-08, -0.1736482, 0.9848078, 0, 0.9848078, 0.1736482, -1, 7.590404e-09, -4.3047315e-08, 497.07663, 20, -479.75073)
+transform = Transform3D(-4.371139e-08, -0.1736482, 0.9848078, 0, 0.9848078, 0.1736482, -1, 7.590404e-09, -4.3047315e-08, 496.67365, 20, -479.9738)
 script = ExtResource("4_rarhs")
 target = NodePath("../Boat")
 fixed_y = 20.0

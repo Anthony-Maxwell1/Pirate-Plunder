@@ -14,8 +14,8 @@ func generate(track: AudioStream, autoplay: bool = false) -> AudioStreamPlayer:
 	return player
 
 func _fix_position(position: float, length: float) -> float:
-	if length < 0:
-		return position - length
+	if position < 0:
+		return position + length
 	return position
 
 func play(track: AudioStream = null, id_: int = INVALID_INDEX, position: float = 0.0, autoplay: bool = true) -> int:
