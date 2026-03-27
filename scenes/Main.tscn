@@ -13,7 +13,7 @@
 [ext_resource type="RDShaderFile" uid="uid://cqhejbalsrvjp" path="res://addons/SunshineClouds2/SunshineCloudsPostCompute.glsl" id="10_yxlcp"]
 [ext_resource type="RDShaderFile" uid="uid://crfpk8ta4qxsk" path="res://addons/SunshineClouds2/SunshineCloudsPreCompute.glsl" id="11_ebg2g"]
 [ext_resource type="Script" uid="uid://dnblgqynq1t7l" path="res://addons/SunshineClouds2/SunshineClouds.gd" id="12_2ofn6"]
-[ext_resource type="Texture2D" uid="uid://yq3ec8agcp15" path="res://assets/images/ship/devart-1.png" id="13_ma7h6"]
+[ext_resource type="Texture2D" uid="uid://cepflp5obfjxd" path="res://assets/images/ship/devart-1.png" id="13_ma7h6"]
 [ext_resource type="NoiseTexture3D" uid="uid://bnck2kxeg5bkg" path="res://addons/SunshineClouds2/NoiseTextures/SmallScaleNoise.tres" id="13_xa025"]
 [ext_resource type="Script" uid="uid://djusduuxf0voj" path="res://addons/SunshineClouds2/SunshineCloudsDriver.gd" id="16_ft6cd"]
 [ext_resource type="Script" uid="uid://bxlm4e5qfb7uu" path="res://addons/SunshineClouds2/SunshineCloudEffector.gd" id="17_bb450"]
@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://ceamcx0ovcsvt" path="res://assets/sound/music/Main/C418 - Cat/track.mp3" id="26_v0vrg"]
 [ext_resource type="AudioStream" uid="uid://d3jtmlu218k2l" path="res://assets/sound/music/Main/C418 - Mall/track.mp3" id="27_dg70y"]
 [ext_resource type="Script" uid="uid://y17wgih4e3ss" path="res://scripts/MusicBank.gd" id="28_pnhog"]
+[ext_resource type="PackedScene" uid="uid://0kgfncvh3fu1" path="res://assets/models/islands/test/test.fbx" id="29_e2s0e"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qnwvq"]
 material = ExtResource("1_elqb8")
@@ -139,7 +140,7 @@ environment = SubResource("Environment_ma7h6")
 compositor = SubResource("Compositor_gsxep")
 
 [node name="Boat" type="MeshInstance3D" parent="." unique_id=1681880987 groups=["Persist"]]
-transform = Transform3D(-0.8924351, 0.072157785, 0.44323754, 0.08485307, 0.9961803, 0.008905105, -0.44108847, 0.0456435, -0.8950701, 0, 3.8621778, 0)
+transform = Transform3D(0.9990993, 0, 0, 0, 0.99983263, 0, 0, 0, 0.99884397, 0, 3.8621778, 0)
 mesh = SubResource("QuadMesh_vcsgt")
 script = ExtResource("3_0bbpv")
 draft = 3.0
@@ -259,3 +260,7 @@ offset_bottom = 136.0
 script = ExtResource("28_pnhog")
 tracks = Array[ExtResource("26_ma7h6")]([SubResource("Resource_e2s0e"), SubResource("Resource_gsxep")])
 automatic = 1
+
+[node name="Islands" type="Node" parent="." unique_id=2014848375]
+
+[node name="test" parent="Islands" unique_id=190877730 instance=ExtResource("29_e2s0e")]
