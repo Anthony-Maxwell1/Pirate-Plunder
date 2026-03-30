@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://d3jtmlu218k2l" path="res://assets/sound/music/Main/C418 - Mall/track.mp3" id="27_dg70y"]
 [ext_resource type="Script" uid="uid://y17wgih4e3ss" path="res://scripts/MusicBank.gd" id="28_pnhog"]
 [ext_resource type="PackedScene" uid="uid://0kgfncvh3fu1" path="res://assets/models/islands/test/test.fbx" id="29_e2s0e"]
+[ext_resource type="Shader" uid="uid://cq4dgqblfdjhb" path="res://assets/shaders/outline/outline.gdshader" id="30_gsxep"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qnwvq"]
 material = ExtResource("1_elqb8")
@@ -129,6 +130,18 @@ script = ExtResource("26_ma7h6")
 name = "C418 - Cat"
 stream = ExtResource("26_v0vrg")
 metadata/_custom_type_script = "uid://d25p4ydumqinb"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0vrg"]
+render_priority = 0
+shader = ExtResource("30_gsxep")
+shader_parameter/outline_width = 1.4
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg70y"]
+next_pass = SubResource("ShaderMaterial_v0vrg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gsxep"]
+size = Vector3(0, 0, 0)
 
 [node name="Main" type="Node3D" unique_id=1698877648]
 
@@ -263,4 +276,12 @@ automatic = 1
 
 [node name="Islands" type="Node" parent="." unique_id=2014848375]
 
-[node name="test" parent="Islands" unique_id=190877730 instance=ExtResource("29_e2s0e")]
+[node name="test" parent="Islands" unique_id=1801898788 instance=ExtResource("29_e2s0e")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 118.49626)
+material_override = SubResource("StandardMaterial3D_dg70y")
+
+[node name="Area3D" type="Area3D" parent="Islands/test" unique_id=1687889598]
+transform = Transform3D(800, 0, 0, 0, 800, 0, 0, 0, 800, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Islands/test/Area3D" unique_id=1061788406]
+shape = SubResource("BoxShape3D_gsxep")

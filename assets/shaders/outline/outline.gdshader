@@ -6,8 +6,8 @@ uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform sampler2D texture_albedo;
 
 void vertex() {
-    // Grow the vertex along the normal
-    VERTEX += NORMAL * outline_width;
+	float scale = length(vec3(MODEL_MATRIX[0].xyz));
+	VERTEX += normalize(NORMAL) * outline_width / scale;
 }
 
 void fragment() {

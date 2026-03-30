@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dps2ud0j8ko2r"]
+
+[ext_resource type="PackedScene" uid="uid://0kgfncvh3fu1" path="res://assets/models/islands/test/test.fbx" id="1_kebqx"]
+[ext_resource type="Shader" uid="uid://cq4dgqblfdjhb" path="res://assets/shaders/outline/outline.gdshader" id="2_yen0o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hj3hm"]
+render_priority = 0
+shader = ExtResource("2_yen0o")
+shader_parameter/outline_width = 0.2
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgpol"]
+next_pass = SubResource("ShaderMaterial_hj3hm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwei0"]
+render_priority = 0
+shader = ExtResource("2_yen0o")
+shader_parameter/outline_width = 0.2
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0i4d"]
+next_pass = SubResource("ShaderMaterial_rwei0")
+
+[node name="test" unique_id=1801898788 instance=ExtResource("1_kebqx")]
+
+[node name="PolySphere" parent="." index="0" unique_id=764251426]
+material_override = SubResource("StandardMaterial3D_kgpol")
+
+[node name="Skin_ZSphere2" parent="." index="1" unique_id=1203275584]
+material_override = SubResource("StandardMaterial3D_y0i4d")
