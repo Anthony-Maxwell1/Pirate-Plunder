@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bg1hrqki0kf0p"]
+
+[node name="StartMenu" type="Control" unique_id=342678793]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Play" type="Button" parent="." unique_id=305627063]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 304.0
+offset_right = 624.0
+offset_bottom = 344.0
+text = "Play"
+
+[node name="Settings" type="Button" parent="." unique_id=1254519568]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 165.0
+offset_bottom = 92.0
+text = "Settings"

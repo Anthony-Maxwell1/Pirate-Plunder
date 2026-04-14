@@ -17,7 +17,7 @@
 [ext_resource type="NoiseTexture3D" uid="uid://bnck2kxeg5bkg" path="res://addons/SunshineClouds2/NoiseTextures/SmallScaleNoise.tres" id="13_xa025"]
 [ext_resource type="Script" uid="uid://djusduuxf0voj" path="res://addons/SunshineClouds2/SunshineCloudsDriver.gd" id="16_ft6cd"]
 [ext_resource type="Script" uid="uid://bxlm4e5qfb7uu" path="res://addons/SunshineClouds2/SunshineCloudEffector.gd" id="17_bb450"]
-[ext_resource type="Script" uid="uid://bcpuglgrvuvxh" path="res://scripts/PauseMenuButton.gd" id="18_bb450"]
+[ext_resource type="Script" uid="uid://bcpuglgrvuvxh" path="res://scripts/MenuButton.gd" id="18_bb450"]
 [ext_resource type="Texture2D" uid="uid://4t37j755r2bm" path="res://assets/images/ui/menu/pause/draft1-devart.png" id="19_ebg2g"]
 [ext_resource type="Script" uid="uid://d4je66j8ldelx" path="res://scripts/PauseMenuButtons.gd" id="19_nfivy"]
 [ext_resource type="Texture2D" uid="uid://coiivigfa1h1p" path="res://assets/images/ui/menu/save/draft1-devart.png" id="21_2ofn6"]
@@ -186,8 +186,8 @@ metadata/_custom_type_script = "uid://bxlm4e5qfb7uu"
 [node name="UI" type="Control" parent="." unique_id=1886850917]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="Pause" type="Button" parent="UI" unique_id=699345267 node_paths=PackedStringArray("menu")]
 layout_mode = 0
