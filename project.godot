@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pirate Plunder"
-run/main_scene="uid://cmnaayusi4ua1"
+run/main_scene="uid://bg1hrqki0kf0p"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://ch3v1xmlkit63"
 config/icon="res://icon.svg"

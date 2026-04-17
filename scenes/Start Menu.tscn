@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://bg1hrqki0kf0p"]
 
+[ext_resource type="Texture2D" uid="uid://bs3at04jdrjlf" path="res://assets/images/ui/loading/bg/tile/placeholder.jpg" id="1_ldcyj"]
+[ext_resource type="Script" uid="uid://cxlb7jxryoyxj" path="res://scripts/BGMovingEffect.gd" id="2_1tdyp"]
+
 [node name="StartMenu" type="Control" unique_id=342678793]
 layout_mode = 3
 anchors_preset = 0
@@ -21,3 +24,16 @@ offset_top = 50.0
 offset_right = 165.0
 offset_bottom = 92.0
 text = "Settings"
+
+[node name="Loading" type="Control" parent="." unique_id=278081910]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="BG" type="TextureRect" parent="Loading" unique_id=1527683538]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_ldcyj")
+stretch_mode = 1
+script = ExtResource("2_1tdyp")
