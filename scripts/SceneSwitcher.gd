@@ -1,4 +1,4 @@
-extends Node
+extends Button
 
 @export var LoadingScreen: Control
 @export var ProgressBar_: ProgressBar
@@ -28,3 +28,6 @@ func _on_button_pressed() -> void:
 			break
 
 		await get_tree().process_frame
+
+func _ready() -> void:
+	pressed.connect(_on_button_pressed)

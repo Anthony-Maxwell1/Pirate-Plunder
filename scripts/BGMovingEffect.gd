@@ -1,37 +1,46 @@
 extends TextureRect
 
-@export var speed := 100.0
+@export var speed := Vector2(-30.0, -30.0)
 
 var tiles: Array[TextureRect] = []
-var tile_width: float
-
-func _get_rightmost_x() -> float:
-	var max_x := -INF
-	for t in tiles:
-		max_x = max(max_x, t.position.x)
-	return max_x
+var tile_size: Vector2
 
 func _ready() -> void:
-	tile_width = size.x
+	if has_meta("is_clone"):
+		return
 
-	# create 2 clones (so we have 3 total)
-	for i in range(2):
+	tile_size = size
+	tiles.append(self)
+
+	var directions = []
+
+	if speed.x != 0:
+		directions.append(Vector2(1, 0))
+	if speed.y != 0:
+		directions.append(Vector2(0, 1))
+	if speed.x != 0 and speed.y != 0:
+		directions.append(Vector2(1, 1))
+
+	# Always ensure at least 2 tiles per axis
+	for dir in directions:
 		var clone = duplicate() as TextureRect
+		clone.set_meta("is_clone", true)
+
 		get_parent().add_child.call_deferred(clone)
 
-		clone.position = position + Vector2(tile_width * (i + 1), 0)
-
-		clone.set_meta("is_clone", true)
+		clone.position = position + (tile_size * dir)
 		tiles.append(clone)
 
-	tiles.append(self)
+	# Create clones in BOTH directions if needed
 
 func _process(delta: float) -> void:
 	for tile in tiles:
-		tile.position.x -= speed * delta
+		tile.position += speed * delta
 
-	# recycle tiles that moved off-screen
+	# recycle tiles
 	for tile in tiles:
-		if tile.position.x <= -tile_width:
-			var rightmost = _get_rightmost_x()
-			tile.position.x = rightmost + tile_width
+		if speed.x != 0 and tile.position.x <= -tile_size.x:
+			tile.position.x += tile_size.x * 2 # reset to back
+
+		if speed.y != 0 and tile.position.y <= -tile_size.y:
+			tile.position.y += tile_size.y * 2 # reset to back

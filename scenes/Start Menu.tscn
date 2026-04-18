@@ -1,7 +1,18 @@
 [gd_scene format=3 uid="uid://bg1hrqki0kf0p"]
 
+[ext_resource type="Script" uid="uid://bcaptxjua7uw1" path="res://scripts/SceneSwitcher.gd" id="1_djlls"]
 [ext_resource type="Texture2D" uid="uid://bs3at04jdrjlf" path="res://assets/images/ui/loading/bg/tile/placeholder.jpg" id="1_ldcyj"]
 [ext_resource type="Script" uid="uid://cxlb7jxryoyxj" path="res://scripts/BGMovingEffect.gd" id="2_1tdyp"]
+[ext_resource type="Texture2D" uid="uid://bxuh2n8arrfpe" path="res://assets/images/ui/loading/decoration/loadingbar/above/devart.png" id="4_ji7dc"]
+[ext_resource type="Texture2D" uid="uid://btt8tvwid8gj2" path="res://assets/images/ui/loading/decoration/loadingbar/devart.png" id="4_oyujt"]
+[ext_resource type="Texture2D" uid="uid://bqajetbnoq2nm" path="res://assets/images/ui/loading/decoration/loadingbar/loaded/devart.png" id="5_f8wlu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2lgkx"]
+texture = ExtResource("4_oyujt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v48ra"]
+texture = ExtResource("5_f8wlu")
+axis_stretch_horizontal = 1
 
 [node name="StartMenu" type="Control" unique_id=342678793]
 layout_mode = 3
@@ -9,13 +20,17 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Play" type="Button" parent="." unique_id=305627063]
+[node name="Play" type="Button" parent="." unique_id=305627063 node_paths=PackedStringArray("LoadingScreen", "ProgressBar_")]
 layout_mode = 0
 offset_left = 524.0
 offset_top = 304.0
 offset_right = 624.0
 offset_bottom = 344.0
 text = "Play"
+script = ExtResource("1_djlls")
+LoadingScreen = NodePath("../Loading")
+ProgressBar_ = NodePath("../Loading/ProgressBar")
+scene_path = "uid://d304frvn1y4sb"
 
 [node name="Settings" type="Button" parent="." unique_id=1254519568]
 layout_mode = 0
@@ -26,6 +41,7 @@ offset_bottom = 92.0
 text = "Settings"
 
 [node name="Loading" type="Control" parent="." unique_id=278081910]
+visible = false
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -37,3 +53,19 @@ offset_bottom = 648.0
 texture = ExtResource("1_ldcyj")
 stretch_mode = 1
 script = ExtResource("2_1tdyp")
+
+[node name="ProgressBar" type="ProgressBar" parent="Loading" unique_id=1404874898]
+z_index = 1
+layout_mode = 0
+offset_left = 326.0
+offset_top = 299.0
+offset_right = 826.0
+offset_bottom = 349.0
+theme_override_styles/background = SubResource("StyleBoxTexture_2lgkx")
+theme_override_styles/fill = SubResource("StyleBoxTexture_v48ra")
+
+[node name="TextureRect" type="TextureRect" parent="Loading/ProgressBar" unique_id=2083896285]
+layout_mode = 0
+offset_top = -50.0
+offset_right = 500.0
+texture = ExtResource("4_ji7dc")
