@@ -1,3 +1,8 @@
+# perlin noise params
+# cell size 20
+# size 256x256
+# Levels 3
+# attenuation 0.9
 extends Button
 
 var rng = RandomNumberGenerator.new()
@@ -38,6 +43,41 @@ class DynamicIsland: # islands that can be generated with dynamic positions
 
 var DynamicIslands : Array[DynamicIsland]
 
+var size_distribution : Array[int] = []
+
+var noise := FastNoiseLite.new()
+
+func gen_shape(position) -> PackedVector2Array:
+	var size := 256 # perlin noise size
+	var data := []  # perlin noise
+	
+	for y in range(size): # rows
+		var row := []
+		for x in range(size): # columns
+			var uv = Vector2(x, y) / size
+			var centered = uv * 2.0 - Vector2.ONE
+			
+			var dist = centered.length() # radial gradient
+			
+			var n = noise.get_noise_2d(x, y) # generate noise
+			
+			var value = n - dist
+			
+			row.append(value)
+		data.append(row)
+	
+	# Perlin noise generated, time to compare land vs water
+	var threshold = 0.0 # Sea level / at what level do we consider a point land?
+	var mask = []
+	
+	for y in range(size):
+		var row := []
+		for x in range(size):
+			row.append(data[y][x] > threshold)
+		mask.append(row)
+	
+	return PackedVector2Array() # todo, finish
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	assert(len(DynamicIslandNames) == len(DynamicIslandTypes))
@@ -50,6 +90,11 @@ func _ready() -> void:
 	
 	rng.seed = hash(seed_)  # todo: randomly generate or take in from user
 	print("Seed: " + seed_)
+	noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	noise.frequency = 1.0 / 20.0
+	noise.fractal_octaves = 3
+	noise.fractal_gain = 0.9
+	noise.seed = hash(seed_)
 	
 	for islandIdx in range(DynamicIslandNames.size()):
 		var name = DynamicIslandNames[islandIdx]
