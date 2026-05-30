@@ -1,20 +1,12 @@
 [gd_scene format=3 uid="uid://bjdra6chdaa0l"]
 
 [ext_resource type="Script" uid="uid://sbbu2rpduojk" path="res://scripts/GenerateWorld.gd" id="1_prfdn"]
+[ext_resource type="Script" uid="uid://ht57ds5l5qox" path="res://scripts/IslandDebug.gd" id="2_ktvj6"]
 
-[node name="MainTry2" type="Node3D" unique_id=1899431192]
-
-[node name="Control" type="Control" parent="." unique_id=722619258]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="Control" unique_id=1986497164]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 14.0
-offset_right = 52.0
-offset_bottom = 33.0
-text = "generate"
+[node name="MainTry2" type="Node3D" unique_id=1899431192 node_paths=PackedStringArray("DEBUG_ISLAND_NODE")]
 script = ExtResource("1_prfdn")
+DEBUG_EN = true
+DEBUG_ISLAND_NODE = NodePath("IslandDebug")
+
+[node name="IslandDebug" type="Node2D" parent="." unique_id=556176340]
+script = ExtResource("2_ktvj6")
